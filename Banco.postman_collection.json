@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "c3f54280-373a-42bc-8772-070b8de1e52a",
+		"name": "Banco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29570776"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "getCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/verCliente/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"verCliente",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "agregarCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"codigo\": 1,\n    \"nombre\": \"Pepito\",\n    \"apellido\": \"Anaya\",\n    \"cuentaCorriente\": true,\n    \"cuentaAhorros\": false,\n    \"tarjetaCredito\": false,\n    \"saldo\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/agregarCliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"agregarCliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "getCuenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/verCuenta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"verCuenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSaldo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/verSaldo/54",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"verSaldo",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUsuario\": 2,\n    \"nombreCuenta\" : \"Jorge Cuenta\",\n    \"tipoCuenta\" : \"Corriente\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/crearCuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"crearCuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearDeposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUsuario\": 1,\n    \"nombreCuenta\" : \"Jorge Cuenta\",\n    \"tipoCuenta\" : \"Ahorros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/depositar?id_usuario=1&numero_cuenta=867000&deposito=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"depositar"
+							],
+							"query": [
+								{
+									"key": "id_usuario",
+									"value": "1"
+								},
+								{
+									"key": "numero_cuenta",
+									"value": "867000"
+								},
+								{
+									"key": "deposito",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUsuario\": 1,\n    \"nombreCuenta\" : \"Jorge Cuenta\",\n    \"tipoCuenta\" : \"Ahorros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/pagos?id_usuario=1&numero_cuenta=867000&deposito=500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"pagos"
+							],
+							"query": [
+								{
+									"key": "id_usuario",
+									"value": "1"
+								},
+								{
+									"key": "numero_cuenta",
+									"value": "867000"
+								},
+								{
+									"key": "deposito",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearRetiros",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUsuario\": 1,\n    \"nombreCuenta\" : \"Jorge Cuenta\",\n    \"tipoCuenta\" : \"Ahorros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/retirar?id_usuario=1&numero_cuenta=867000&deposito=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"retirar"
+							],
+							"query": [
+								{
+									"key": "id_usuario",
+									"value": "1"
+								},
+								{
+									"key": "numero_cuenta",
+									"value": "867000"
+								},
+								{
+									"key": "deposito",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearTransferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUsuario\": 1,\n    \"nombreCuenta\" : \"Jorge Cuenta\",\n    \"tipoCuenta\" : \"Ahorros\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/transferencias?id_usuarioDe=1&id_usuarioHacia=2&numero_cuentaDe=867000&numero_cuentaHacia=442000&deposito=50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"transferencias"
+							],
+							"query": [
+								{
+									"key": "id_usuarioDe",
+									"value": "1"
+								},
+								{
+									"key": "id_usuarioHacia",
+									"value": "2"
+								},
+								{
+									"key": "numero_cuentaDe",
+									"value": "867000"
+								},
+								{
+									"key": "numero_cuentaHacia",
+									"value": "442000"
+								},
+								{
+									"key": "deposito",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Historial",
+			"item": [
+				{
+					"name": "getHistorial",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
