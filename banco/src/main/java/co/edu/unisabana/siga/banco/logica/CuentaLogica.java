@@ -65,4 +65,13 @@ public class CuentaLogica {
             return saldoCuenta;
         }
     }
+
+    public BigDecimal verGastosTarjeta(int id) {
+        BigDecimal saldoCuenta = cuentaRepository.getBalanceCredito(id);
+        if(saldoCuenta == null){
+            return BigDecimal.valueOf(0.0);
+        } else {
+            return saldoCuenta;
+        }
+    }
 }

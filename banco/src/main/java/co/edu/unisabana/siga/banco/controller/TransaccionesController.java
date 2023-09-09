@@ -2,6 +2,7 @@ package co.edu.unisabana.siga.banco.controller;
 
 import co.edu.unisabana.siga.banco.bd.CuentaRepository;
 import co.edu.unisabana.siga.banco.controller.dto.RespuestaDTO;
+import co.edu.unisabana.siga.banco.logica.HistorialLogica;
 import co.edu.unisabana.siga.banco.logica.TransaccionLogica;
 import org.jetbrains.annotations.Contract;
 import org.springframework.web.bind.annotation.*;
@@ -15,46 +16,51 @@ public class TransaccionesController {
     }
 
     @PostMapping(path = "/depositar")
-    public RespuestaDTO depositar(@RequestParam("id_usuario") String id_usuario, @RequestParam("numero_cuenta") String numero_cuenta, @RequestParam("deposito") String deposito){
+    public RespuestaDTO depositar(@RequestParam("numero_cuenta") String numero_cuenta,
+                                  @RequestParam("deposito") String deposito){
         try {
-            logica.depositar(id_usuario, numero_cuenta, deposito);
+            logica.depositar(numero_cuenta, deposito);
 
-            return new RespuestaDTO("Transaccion correctamente");
+            return new RespuestaDTO("DEPOSITO exitoso");
         } catch (IllegalArgumentException e) {
-            return new RespuestaDTO("Transaccion erronea");
+            return new RespuestaDTO("ERROR en el DEPOSITO");
         }
     }
 
     @PostMapping(path = "/retirar")
-    public RespuestaDTO retirar(@RequestParam("id_usuario") String id_usuario, @RequestParam("numero_cuenta") String numero_cuenta, @RequestParam("deposito") String deposito){
+    public RespuestaDTO retirar(@RequestParam("numero_cuenta") String numero_cuenta,
+                                @RequestParam("deposito") String deposito){
         try {
-            logica.retirar(id_usuario, numero_cuenta, deposito);
+            logica.retirar(numero_cuenta, deposito);
 
-            return new RespuestaDTO("Transaccion correctamente");
+            return new RespuestaDTO("RETIRO exitoso");
         } catch (IllegalArgumentException e) {
-            return new RespuestaDTO("Transaccion erronea");
+            return new RespuestaDTO("ERROR en el RETIRO");
         }
     }
 
-    @PostMapping(path = "/pagos")
-    public RespuestaDTO pagos(@RequestParam("id_usuario") String id_usuario, @RequestParam("numero_cuenta") String numero_cuenta, @RequestParam("deposito") String deposito){
+    @PostMapping(path = "/pagar")
+    public RespuestaDTO pagos(@RequestParam("numero_cuenta") String numero_cuenta,
+                              @RequestParam("deposito") String deposito){
         try {
-            logica.pagos(id_usuario, numero_cuenta, deposito);
+            logica.pagos(numero_cuenta, deposito);
 
-            return new RespuestaDTO("Transaccion correctamente");
+            return new RespuestaDTO("PAGO exitoso");
         } catch (IllegalArgumentException e) {
-            return new RespuestaDTO("Transaccion erronea");
+            return new RespuestaDTO("ERROR en el PAGO");
         }
     }
 
-    @PostMapping(path = "/transferencias")
-    public RespuestaDTO transferencias(@RequestParam("id_usuarioDe") String id_usuarioDe,@RequestParam("id_usuarioHacia") String id_usuarioHacia, @RequestParam("numero_cuentaDe") String numero_cuentaDe, @RequestParam("numero_cuentaHacia") String numero_cuentaHacia,@RequestParam("deposito") String deposito){
+    @PostMapping(path = "/transferir")
+    public RespuestaDTO transferencias(@RequestParam("numero_cuentaDe") String numero_cuentaDe,
+                                       @RequestParam("numero_cuentaHacia") String numero_cuentaHacia,
+                                       @RequestParam("deposito") String deposito){
         try {
-            logica.transferencias(id_usuarioDe, id_usuarioHacia, numero_cuentaDe, numero_cuentaHacia, deposito);
+            logica.transferencias(numero_cuentaDe, numero_cuentaHacia, deposito);
 
-            return new RespuestaDTO("Transaccion correctamente");
+            return new RespuestaDTO("TRANSFERENCIA exitosa");
         } catch (IllegalArgumentException e) {
-            return new RespuestaDTO("Transaccion erronea");
+            return new RespuestaDTO("ERROR en la TRANSFERENCIA");
         }
     }
 }

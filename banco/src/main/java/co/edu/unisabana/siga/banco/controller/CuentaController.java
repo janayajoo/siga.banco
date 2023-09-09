@@ -18,7 +18,7 @@ public class CuentaController {
     }
 
 
-    @PostMapping(path = "/crearCuenta")
+    @PostMapping(path = "/cuenta/crear")
     public RespuestaDTO crearCuenta(@RequestBody CuentaDTO cuentaDTO) {
         try {
             logica.crearCuenta(cuentaDTO);
@@ -29,7 +29,7 @@ public class CuentaController {
         }
     }
 
-    @GetMapping(path = "/verCuenta/{id}")
+    @GetMapping(path = "/cuenta/{id}")
     public List<Cuenta> verCuenta(@PathVariable int id) {
         try{
             return logica.verCuenta(id);
@@ -38,14 +38,15 @@ public class CuentaController {
         }
     }
 
-    @GetMapping(path = "/verSaldo/{id}")
+    @GetMapping(path = "/cuenta/{id}/saldo")
     public String verSaldo(@PathVariable int id) {
         try {
             return "Saldo Total: " + logica.verSaldo(id).toString() + "\n" +
-                    "Saldo Ahorros: " + logica.verSaldoAhorros(id).toString() + "\n" +
-                    "Saldo Corriente: " + logica.verSaldoCorriente(id).toString();
+                   "Saldo Ahorros: " + logica.verSaldoAhorros(id).toString() + "\n" +
+                   "Saldo Corriente: " + logica.verSaldoCorriente(id).toString() + "\n" +
+                   "Gastos con Tarjeta: " + logica.verGastosTarjeta(id).toString();
         } catch (IllegalArgumentException e) {
-            return ("No se visualizo el saldo");
+            return "No se visualizo el saldo";
         }
     }
 }

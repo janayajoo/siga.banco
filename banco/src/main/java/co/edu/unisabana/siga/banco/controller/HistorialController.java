@@ -1,17 +1,15 @@
 package co.edu.unisabana.siga.banco.controller;
 
 import co.edu.unisabana.siga.banco.bd.Cuenta;
-import co.edu.unisabana.siga.banco.controller.dto.CuentaDTO;
-import co.edu.unisabana.siga.banco.controller.dto.HistorialTransaccionDTO;
-import co.edu.unisabana.siga.banco.controller.dto.RespuestaDTO;
-import co.edu.unisabana.siga.banco.logica.CuentaLogica;
+import co.edu.unisabana.siga.banco.bd.Historial;
 import co.edu.unisabana.siga.banco.logica.HistorialLogica;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
+@RestController
 public class HistorialController {
     private HistorialLogica logica;
 
@@ -19,12 +17,12 @@ public class HistorialController {
         this.logica = logica;
     }
 
-
-    @PostMapping(path = "/historial/{id}")
-    public List<Cuenta> verHistorial(@PathVariable int id) {
-        try{
-            return logica.verHistorial(id);
+    @GetMapping(path = "/historial/{cuenta}")
+    public List<Historial> verHistorial(@PathVariable int cuenta) {
+        try {
+            return logica.verHistorial(cuenta);
         } catch (IllegalArgumentException e) {
-            return (List<Cuenta>) e;
+            return (List<Historial>) e;
         }
+    }
 }

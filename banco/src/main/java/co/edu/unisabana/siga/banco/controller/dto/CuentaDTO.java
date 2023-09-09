@@ -1,26 +1,19 @@
 package co.edu.unisabana.siga.banco.controller.dto;
 
+import co.edu.unisabana.siga.banco.helper.TipoCuenta;
+
 import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CuentaDTO {
-    private int codigoCuenta;
     private int idUsuario;
     private int numeroCuenta;
     private String nombreCuenta;
-    private String tipoCuenta;
+    private TipoCuenta tipoCuenta;
     private BigDecimal saldo;
     private LocalDate fechaCreacion;
     private LocalDate fechaModificacion;
-
-    public int getCodigoCuenta() {
-        return codigoCuenta;
-    }
-
-    public void setCodigoCuenta(int codigoCuenta) {
-        this.codigoCuenta = codigoCuenta;
-    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -46,11 +39,11 @@ public class CuentaDTO {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public String getTipoCuenta() {
+    public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
     }
 
-    public void setTipoCuenta(String tipoCuenta) {
+    public void setTipoCuenta(TipoCuenta tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
 

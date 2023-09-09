@@ -1,9 +1,13 @@
 package co.edu.unisabana.siga.banco.controller;
 
+import co.edu.unisabana.siga.banco.bd.Cliente;
+import co.edu.unisabana.siga.banco.bd.Cuenta;
 import co.edu.unisabana.siga.banco.controller.dto.ClienteDTO;
 import co.edu.unisabana.siga.banco.controller.dto.RespuestaDTO;
 import co.edu.unisabana.siga.banco.logica.ClienteLogica;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ClienteController {
@@ -14,7 +18,7 @@ public class ClienteController {
         this.logica = logica;
     }
 
-    @PostMapping(path = "/agregarCliente")
+    @PostMapping(path = "/cliente/agregar")
     public RespuestaDTO guardarCliente(@RequestBody ClienteDTO clienteDTO) {
         try {
             logica.guardarCliente(clienteDTO);
@@ -23,14 +27,13 @@ public class ClienteController {
             return new RespuestaDTO("cliente con nombre prohibido");
         }
     }
-
-    @GetMapping(path = "/verCliente/{id}")
-    public RespuestaDTO verCliente(@PathVariable int id) {
-        try {
-            logica.verCliente(id);
-            return new RespuestaDTO("Se visualizo la cuenta");
+    
+    @GetMapping(path = "/cliente/{id}")
+    public List<Cliente> verCliente(@PathVariable int id) {
+        try{
+            return logica.verCliente(id);
         } catch (IllegalArgumentException e) {
-            return new RespuestaDTO("No se visualizo la cuenta");
+            return (List<Cliente>) e;
         }
     }
 }

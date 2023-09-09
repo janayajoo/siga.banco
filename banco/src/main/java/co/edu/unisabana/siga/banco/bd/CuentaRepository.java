@@ -16,17 +16,19 @@ public interface CuentaRepository extends JpaRepository<Cuenta, Integer> {
     @Query (value = "SELECT * FROM cuenta WHERE id_usuario = :id_usuario", nativeQuery = true)
     List<Cuenta> getAccountById(@Param ("id_usuario")int id_usuario);
     @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario", nativeQuery = true)
-    BigDecimal getTotalBalance (@Param("id_usuario") int id_usuario);
+    BigDecimal getTotalBalance(@Param("id_usuario") int id_usuario);
 
-    @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario AND tipo_cuenta = 'Ahorros'", nativeQuery = true)
-    BigDecimal getBalanceAhorros (@Param("id_usuario") int id_usuario);
+    @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario AND tipo_cuenta = 1", nativeQuery = true)
+    BigDecimal getBalanceAhorros(@Param("id_usuario") int id_usuario);
 
-    @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario AND tipo_cuenta = 'Corriente'", nativeQuery = true)
-    BigDecimal getBalanceCorriente (@Param("id_usuario") int id_usuario);
+    @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario AND tipo_cuenta = 0", nativeQuery = true)
+    BigDecimal getBalanceCorriente(@Param("id_usuario") int id_usuario);
 
-    @Query (value = "SELECT saldo FROM cuenta WHERE id_usuario = :id_usuario AND numero_cuenta = :numero_cuenta", nativeQuery = true)
-    double getBalanceCuenta (@Param("id_usuario") int id_usuario,
-                                 @Param("numero_cuenta") int numero_cuenta);
+    @Query (value = "SELECT sum(saldo) FROM cuenta WHERE id_usuario = :id_usuario AND tipo_cuenta = 2", nativeQuery = true)
+    BigDecimal getBalanceCredito(@Param("id_usuario") int id_usuario);
+
+    @Query (value = "SELECT saldo FROM cuenta WHERE numero_cuenta = :numero_cuenta", nativeQuery = true)
+    double getBalanceCuenta(@Param("numero_cuenta") int numero_cuenta);
 
     @Modifying
     @Query (value = "UPDATE cuenta SET saldo = :new_balance WHERE numero_cuenta = :id_usuario", nativeQuery = true)

@@ -18,12 +18,6 @@ public class Cliente {
     @Column
     private int saldo;
     @Column
-    private boolean cuentaAhorros;
-    @Column
-    private boolean cuentaCorriente;
-    @Column
-    private boolean tarjetaCredito;
-    @Column
     private LocalDate fechaCreacion;
     @Column
     private LocalDate fechaModificacion;
@@ -104,29 +98,5 @@ public class Cliente {
 
     public void setSaldo(int saldo) {
         this.saldo = saldo;
-    }
-
-    public boolean isCuentaAhorros() {
-        return cuentaAhorros;
-    }
-
-    public void setCuentaAhorros(boolean cuentaAhorros) {
-        this.cuentaAhorros = cuentaAhorros;
-    }
-
-    public boolean isCuentaCorriente() {
-        return cuentaCorriente;
-    }
-
-    public void setCuentaCorriente(boolean cuentaCorriente) {
-        this.cuentaCorriente = cuentaCorriente;
-    }
-
-    public boolean isTarjetaCredito() {
-        return tarjetaCredito;
-    }
-
-    public void setTarjetaCredito(boolean tarjetaCredito) {
-        this.tarjetaCredito = tarjetaCredito;
     }
 }

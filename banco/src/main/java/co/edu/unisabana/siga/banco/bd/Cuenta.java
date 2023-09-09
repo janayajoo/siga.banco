@@ -1,5 +1,7 @@
 package co.edu.unisabana.siga.banco.bd;
 
+import co.edu.unisabana.siga.banco.helper.TipoCuenta;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,31 +11,20 @@ import java.time.LocalDate;
 public class Cuenta {
 
     @Id
-    @GeneratedValue
-    @Column
-    private int codigoCuenta;
-    @Column
-    private int idUsuario;
     @Column
     private int numeroCuenta;
     @Column
+    private int idUsuario;
+    @Column
     private String nombreCuenta;
     @Column
-    private String tipoCuenta;
+    private TipoCuenta tipoCuenta;
     @Column
     private BigDecimal saldo;
     @Column
     private LocalDate fechaCreacion;
     @Column
     private LocalDate fechaModificacion;
-
-    public int getCodigoCuenta() {
-        return codigoCuenta;
-    }
-
-    public void setCodigoCuenta(int codigoCuenta) {
-        this.codigoCuenta = codigoCuenta;
-    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -59,11 +50,11 @@ public class Cuenta {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public String getTipoCuenta() {
+    public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
     }
 
-    public void setTipoCuenta(String tipoCuenta) {
+    public void setTipoCuenta(TipoCuenta tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
 

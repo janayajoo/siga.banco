@@ -24,9 +24,6 @@ public class ClienteLogica {
         cliente.setCodigo(clienteDTO.getCodigo());
         cliente.setNombre(clienteDTO.getNombre());
         cliente.setApellido(clienteDTO.getApellido());
-        cliente.setCuentaAhorros(clienteDTO.isCuentaAhorros());
-        cliente.setCuentaCorriente(clienteDTO.isCuentaCorriente());
-        cliente.setTarjetaCredito(clienteDTO.isTarjetaCredito());
         cliente.setToken(Token.generateToken());
         cliente.setEmail(clienteDTO.getEmail());
         cliente.setHashed_password((clienteDTO.getHashedPassword()));
@@ -37,8 +34,8 @@ public class ClienteLogica {
         clienteRepository.save(cliente);
     }
 
-    public void verCliente(int id) {
-        List<Cliente> obtenerCliente = clienteRepository.getAccountById(id);
+    public List<Cliente> verCliente(int id) {
+        return clienteRepository.getAccountById(id);
     }
 
 }

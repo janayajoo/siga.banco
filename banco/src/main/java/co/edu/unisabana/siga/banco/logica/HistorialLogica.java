@@ -1,30 +1,27 @@
 package co.edu.unisabana.siga.banco.logica;
 
 import co.edu.unisabana.siga.banco.bd.Cuenta;
-import co.edu.unisabana.siga.banco.bd.CuentaRepository;
-import co.edu.unisabana.siga.banco.bd.HistorialTransacciones;
-import co.edu.unisabana.siga.banco.bd.HistorialTransaccionesRepository;
-import co.edu.unisabana.siga.banco.controller.HistorialController;
-import co.edu.unisabana.siga.banco.controller.dto.CuentaDTO;
-import co.edu.unisabana.siga.banco.controller.dto.HistorialTransaccionDTO;
-import co.edu.unisabana.siga.banco.helper.GeneradorCuenta;
+import co.edu.unisabana.siga.banco.bd.Historial;
+import co.edu.unisabana.siga.banco.bd.HistorialRepository;
+import co.edu.unisabana.siga.banco.controller.dto.HistorialDTO;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
+import java.nio.file.Path;
 import java.time.LocalDate;
-
+import java.util.List;
+@Service
 public class HistorialLogica {
-    private HistorialTransaccionesRepository historialTransaccionesRepository;
 
-    public HistorialLogica(HistorialTransaccionesRepository historialTransaccionesRepository) {
-        this.historialTransaccionesRepository = historialTransaccionesRepository;
+    private HistorialRepository historialRepository;
+
+    public HistorialLogica(HistorialRepository historialRepository) {
+        this.historialRepository = historialRepository;
     }
 
-    public void guardarHistorial(HistorialTransaccionDTO historialTransaccionDTO) {
-        HistorialTransacciones historial = new HistorialTransacciones();
-        historial.setIdUsuario(historialTransaccionDTO.getIdUsuario());
-        historial.setFechaCreacion(LocalDate.now());
-        historial.setFechaModificacion(LocalDate.now());
-
-        historialTransaccionesRepository.save(historial);
+    public List<Historial> verHistorial(int numero_cuenta) {
+        return historialRepository.getHistorialByCuenta(numero_cuenta);
     }
+
 }
