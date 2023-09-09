@@ -2,10 +2,10 @@ package co.edu.unisabana.siga.banco.logica;
 
 import co.edu.unisabana.siga.banco.bd.Cliente;
 import co.edu.unisabana.siga.banco.bd.ClienteRepository;
-import co.edu.unisabana.siga.banco.bd.Cuenta;
 import co.edu.unisabana.siga.banco.controller.dto.ClienteDTO;
 import co.edu.unisabana.siga.banco.helper.Token;
 import org.springframework.stereotype.Service;
+import lombok.Lombok;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,7 +26,8 @@ public class ClienteLogica {
         cliente.setApellido(clienteDTO.getApellido());
         cliente.setToken(Token.generateToken());
         cliente.setEmail(clienteDTO.getEmail());
-        cliente.setHashed_password((clienteDTO.getHashedPassword()));
+        cliente.setHashedPassword((clienteDTO.getHashedPassword()));
+
 
         cliente.setFechaCreacion(LocalDate.now());
         cliente.setFechaModificacion(LocalDate.now());

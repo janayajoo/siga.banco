@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
+
 @Service
 public class HistorialLogica {
 
@@ -23,5 +24,4 @@ public class HistorialLogica {
     public List<Historial> verHistorial(int numero_cuenta) {
         return historialRepository.getHistorialByCuenta(numero_cuenta);
     }
-
 }

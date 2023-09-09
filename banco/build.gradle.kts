@@ -21,6 +21,8 @@ dependencies {
 	implementation("mysql:mysql-connector-java:8.0.32")
 	implementation("org.jetbrains:annotations:24.0.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
 	// Anadir Lombok
 
 }

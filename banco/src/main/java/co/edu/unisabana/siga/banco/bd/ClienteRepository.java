@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
     @Query(value = "SELECT * FROM cliente WHERE codigo = :codigo", nativeQuery = true)
     List<Cliente> getAccountById(@Param("codigo")int codigo);
 
